@@ -3,14 +3,19 @@ using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.StaticFiles;
 using Owin;
 using System.IO;
+using System.Net;
 using Microsoft.Owin.Extensions;
 
 namespace Angular2OwinHost
 {
-    public class Startup
+    public partial class Startup
     {
         public void Configuration(IAppBuilder app)
         {
+            ServicePointManager.ServerCertificateValidationCallback = delegate
+            {
+                return true;
+            };
             app.Use(typeof(CustomMiddleware));
             app.UseStaticFiles();
             app.UseStageMarker(PipelineStage.MapHandler);
@@ -21,6 +26,8 @@ namespace Angular2OwinHost
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            ConfigureAuth(app);
 
             app.UseWebApi(config);
 

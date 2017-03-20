@@ -4,9 +4,43 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
 Hello!
-<button></button>
+<button onclick="Login()">Login</button>
+
+<a href="api/values">Login</a>
+
 </body>
+
+<script>
+
+    function Login() {
+        var uri = 'api/values';
+
+      
+            $.ajax({
+                url: uri,
+                type: "Get",
+                success: function(data) {
+                    $.ajax({
+                        url: uri,
+                        type: "GET",
+                        data: data,
+                        success: function(value) {
+                            alert(value);
+                        },
+                        error: function(jqXHR, textStatus, err) {                            
+                        }
+                    });
+                },
+                error: function(jqXHR, textStatus, err) {                    
+                }
+            });
+        }
+   
+
+</script>
+
 </html>
