@@ -21,6 +21,7 @@ namespace Angular2OwinHost
             app.UseStageMarker(PipelineStage.MapHandler);
 
             HttpConfiguration config = new HttpConfiguration();
+            config.MapHttpAttributeRoutes();
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",

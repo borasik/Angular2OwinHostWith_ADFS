@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -15,28 +16,11 @@ namespace Angular2OwinHost
 {
     [Authorize]
     public class ValuesController : ApiController
-    {              
-        // GET api/values 
-        public HttpResponseMessage Get()
-        {
-            //var identity = System.Threading.Thread.CurrentPrincipal.Identity;
-            //var claimsIdentity = System.Threading.Thread.CurrentPrincipal.Identity as ClaimsIdentity;
-            //var firstclaimsIdentity = claimsIdentity.Claims.First(c => c.Type == ClaimTypes.GivenName).Value;
-            var response = Request.CreateResponse(HttpStatusCode.Found);
-            response.Headers.Location = new Uri("http://localhost:12345/homePage.html");
-            return response;
-          //  return "Hi";
-        }
-
-        // GET api/values/5 
-
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/values 
-        public HttpResponseMessage Post([FromBody]string value)
+    {
+        [HttpGet]
+        [Route("api/test")]
+        [AllowAnonymous]
+        public HttpResponseMessage Test()
         {
             var provider = "Nighthawk ADFS";
             var ctx = Request.GetOwinContext();
@@ -55,7 +39,29 @@ namespace Angular2OwinHost
             var response = Request.CreateResponse(HttpStatusCode.Moved);
             response.Headers.Location = new Uri("http://localhost:12345/homePage.html");
             return response;
+        }
 
+        // GET api/values        
+     
+        public HttpResponseMessage Get()
+        {
+            return null;
+        }
+
+        // GET api/values/5 
+
+        public string Get(int id)
+        {
+            return "value";
+        }
+
+
+
+        // POST api/values 
+       
+        public HttpResponseMessage Post([FromBody]string value)
+        {
+            return null;
         }
 
         // PUT api/values/5 

@@ -26,8 +26,9 @@ namespace Angular2OwinHost
                 AuthenticationType = "Nighthawk ADFS",
                 //Wreply = string.Concat(rootUrl,"LoginCallbackNighthawkAdfs"),
                 //Wtrealm = string.Concat(rootUrl, "LoginCallbackNighthawkAdfs"),
-                Wreply = "https://localhost:12345/api/values",
-                Wtrealm = "https://localhost:12345/api/values",
+                //Wreply = "https://localhost:12345/api/test",
+                Wreply = "https://desinto.com/customerregistrationapi/logout",
+                Wtrealm = "https://desinto.com/customerregistrationapi/logout",
                 BackchannelCertificateValidator = null,
                 SignInAsAuthenticationType = WsFederationAuthenticationDefaults.AuthenticationType
             };

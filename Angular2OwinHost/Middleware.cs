@@ -28,7 +28,7 @@ namespace Angular2OwinHost
             context.Authentication.Challenge(
                    new AuthenticationProperties
                    {
-                       RedirectUri = "https://dhidppserver.azurewebsites.net/internallogin"
+                       RedirectUri = "api/test"
                    },
                    "Nighthawk ADFS");
 
